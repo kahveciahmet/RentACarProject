@@ -1,12 +1,13 @@
 ﻿using Entities;
+using System.Linq.Expressions;
 
 namespace DataAccess
 {
-    public class InMemoryProductDal : ICarDal
+    public class InMemoryCarDal : ICarDal
     {
         List<Car> _cars;
 
-        public InMemoryProductDal()
+        public InMemoryCarDal()
         {
             List<Car> cars = new List<Car>
             {
@@ -19,7 +20,14 @@ namespace DataAccess
         }
         public void Add(Car car)
         {
-            _cars.Add(car);
+            if (car.Description?.Length > 2 && car.DailyPrice > 0)
+            {
+                _cars.Add(car);
+            }
+            else
+            {
+                throw new ArgumentException("Araba ismi minimum 2 karakter olmalıdır ve günlük fiyat 0dan büyük olmalıdır.");
+            }
         }
 
         public void Delete(Car car)
@@ -28,7 +36,12 @@ namespace DataAccess
             _cars.Remove(result);
         }
 
-        public List<Car> GetAll()
+        public Car Get(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             return _cars;
         }
@@ -37,6 +50,18 @@ namespace DataAccess
         {
             return _cars.Where(x => x.Id == id).ToList();
         }
+
+        public List<Car> GetCarsByBrandId(int brandId)
+        {
+            return _cars.Where(x=>x.BrandId == brandId).ToList();
+        }
+        
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _cars.Where(x=>x.ColorId == colorId).ToList();
+        }
+
+
 
         public void Update(Car car)
         {
