@@ -1,53 +1,28 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess;
 using Entities;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class EfCarDal : ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, RentACarDB>, ICarDal
     {
-        public void Add(Car entity)
+        public List<CarDto> GetCarDetails()
         {
-            using (RentACarContextDB db = new RentACarContextDB())
+            using (RentACarDB context = new RentACarDB())
             {
-                var addedEntity = db.Add(entity);
-                addedEntity.State = EntityState.Added;
-                db.SaveChanges();
+                var result = from c in context.Cars
+                             join b in context.Brands on c.BrandId equals b.Id
+                             join x in context.Colors on c.ColorId equals x.Id
+                             select new CarDto
+                             {
+                                 Id = c.Id,
+                                 BrandName = b.Name,
+                                 ColorName = x.Name,
+                                 DailyPrice = c.DailyPrice,
+                                 Name = c.Description,
+                             };
+
+                return result.ToList();
             }
-        }
-
-        public void Delete(Car entity)
-        {
-            using (RentACarContextDB db = new RentACarContextDB())
-            {
-                var deletedEntity = db.Add(entity);
-                deletedEntity.State = EntityState.Deleted;
-                db.SaveChanges();
-            }
-        }
-
-        public Car Get(Expression<Func<Car, bool>> filter = null)
-        {
-            using (RentACarContextDB db = new RentACarContextDB())
-            {
-                return db.Set<Car>().SingleOrDefault(filter);
-            }
-        }
-
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Car entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }

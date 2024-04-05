@@ -1,33 +1,29 @@
 ﻿using Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace DataAccess
 {
-    public class RentACarContextDB : DbContext
+    public class RentACarDB : DbContext
     {
-        private const string ConnectionString = $"data source={StaticData.SQLServerName};initial catalog={StaticData.DBName};persist security info=True;Integrated Security=SSPI;MultipleActiveResultSets=True;App=EntityFramework&quot;TrustServerCertificate=True;\";\r\n";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder.UseSqlServer(@"Server=.;Database=RentACarDB;TrustServerCertificate=True;Trusted_Connection=True");
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            foreach (var type in Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.BaseType != null && t.BaseType.IsGenericType &&
-                    t.BaseType.GetGenericTypeDefinition() == typeof(BaseConfig<>)))
-            {
-                modelBuilder.ApplyConfiguration((dynamic)Activator.CreateInstance(type));
-            }
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            {
-                relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            }
-        }
 
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Brand> Brands { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Car>().ToTable("Cars");
+            modelBuilder.Entity<Color>().ToTable("Colors");
+            modelBuilder.Entity<Brand>().ToTable("Brands");
+
+            modelBuilder.Entity<Car>()
+        .Property(c => c.DailyPrice)
+        .HasColumnType("decimal(18, 2)");
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace DataAccess
         {
             List<Car> cars = new List<Car>
             {
-                new Car { Id = 1, BrandId = 1, ColorId = 1, DailyPrice = 3700, ModelYear = new DateTime(2024,1,1),Description="BMW 420i 2024 Model" },
+                new Car { Id = 1, BrandId = 1, ColorId = 1 ,DailyPrice = 3700, ModelYear = new DateTime(2024,1,1),Description="BMW 420i 2024 Model" },
                 new Car { Id = 2, BrandId = 1, ColorId = 2, DailyPrice = 4000, ModelYear = new DateTime(2024,1,1),Description="BMW 520i 2024 Model" },
                 new Car { Id = 3, BrandId = 2, ColorId = 2, DailyPrice = 3500, ModelYear = new DateTime(2023,6,20),Description="Mercedes C180 2023 Model" },
                 new Car { Id = 4, BrandId = 3, ColorId = 1, DailyPrice = 2250, ModelYear = new DateTime(2016,1,1),Description="Ford Courier 2016 Model" },
@@ -49,6 +49,11 @@ namespace DataAccess
         public List<Car> GetById(int id)
         {
             return _cars.Where(x => x.Id == id).ToList();
+        }
+
+        public List<CarDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetCarsByBrandId(int brandId)

@@ -1,4 +1,6 @@
-﻿namespace Entities
+﻿using Core.Entities;
+
+namespace Entities
 {
     public class Color : IEntity
     {
