@@ -7,7 +7,7 @@ namespace DataAccess
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.;Database=RentACarDB;TrustServerCertificate=True;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer(StaticData.ConnectionString);
         }
 
 
