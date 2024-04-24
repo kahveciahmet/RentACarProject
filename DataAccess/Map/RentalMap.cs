@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccess
 {
-    public class ColorMap : BaseConfig<ColorMap>, IEntityTypeConfiguration<Color>
+    public class RentalMap : BaseConfig<RentalMap>, IEntityTypeConfiguration<Rental>
     {
-        public void Configure(EntityTypeBuilder<Color> builder)
+        public void Configure(EntityTypeBuilder<Rental> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.ToTable("Colors");
+            builder.ToTable("Rentals");
         }
     }
 }

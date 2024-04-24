@@ -11,5 +11,7 @@ namespace Entities
         public string BrandName { get; set; }
         public string ColorName { get; set; }
         public decimal DailyPrice { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

@@ -1,35 +1,57 @@
-﻿using DataAccess;
+﻿using Business.Constants;
+using Core.Utilities;
+using DataAccess;
 using Entities;
 
 namespace Business
 {
     public class CarManager : ICarService
     {
-        ICarDal _carDal;
+        private readonly ICarDal _carDal;
 
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
 
-        public List<Car> GetAll()
+        public IResult Add(Car car)
         {
-            return _carDal.GetAll();    
+            _carDal.Add(car);
+            return new SuccessResult(Messages.ItemAdded);
         }
 
-        public List<Car> GetAllByBrandId(int id)
+        public IResult Delete(Car car)
         {
-            return _carDal.GetAll(x=>x.BrandId == id);
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.ItemDeleted);
         }
 
-        public List<Car> GetById(int id)
+        public IResult Update(Car car)
         {
-            return _carDal.GetAll(x=>x.Id == id);
+            _carDal.Update(car);
+            return new SuccessResult(Messages.ItemDeleted);
         }
 
-        public List<CarDto> GetCarDetails()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());    
         }
+
+        public IDataResult<List<Car>> GetAllByBrandId(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x=>x.BrandId == id));
+        }
+
+        public IDataResult<List<Car>> GetById(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x=>x.Id == id));
+        }
+
+        public IDataResult<List<CarDto>> GetCarDetails()
+        {
+            return new SuccessDataResult<List<CarDto>>(_carDal.GetCarDetails());
+        }
+
+        
     }
 }

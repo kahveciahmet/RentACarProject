@@ -1,9 +1,15 @@
-﻿using Entities;
+﻿using Core.Utilities;
+using Entities;
 
 namespace Business
 {
     public interface IColorService
     {
-        List<Color> GetAll();
+        IResult Add(Color color);
+        IResult Delete(Color color);
+        IResult Update(Color color);
+        IDataResult<List<Color>> GetAll();
+        IDataResult<List<Color>> GetById(int id);
+
     }
 }

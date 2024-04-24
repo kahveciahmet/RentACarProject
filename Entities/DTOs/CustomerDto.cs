@@ -2,10 +2,11 @@
 
 namespace Entities
 {
-    public class Brand : IEntity
+    public class CustomerDto : IDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public int UserId { get; set; }
+        public string CompanyName { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
     }

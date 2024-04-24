@@ -1,12 +1,16 @@
-﻿using Entities;
+﻿using Core.Utilities;
+using Entities;
 
 namespace Business
 {
     public interface ICarService
     {
-        List<Car> GetAll();
-        List<Car> GetById(int id);
-        List<Car> GetAllByBrandId(int id);
-        List<CarDto> GetCarDetails();
+        IResult Add(Car car);
+        IResult Delete(Car car);
+        IResult Update(Car car);
+        IDataResult<List<Car>> GetAll();
+        IDataResult<List<Car>> GetById(int id);
+        IDataResult<List<Car>> GetAllByBrandId(int id);
+        IDataResult<List<CarDto>> GetCarDetails();
     }
 }

@@ -11,6 +11,9 @@ namespace Entities
         public DateTime ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
         public string Description { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
+
         //Relational properties
 
         [ForeignKey("ColorId")]

@@ -1,9 +1,11 @@
-﻿using DataAccess;
+﻿using Business.Constants;
+using Core.Utilities;
+using DataAccess;
 using Entities;
 
 namespace Business
 {
-    public class ColorManager
+    public class ColorManager : IColorService
     {
         IColorDal _colorDal;
 
@@ -12,9 +14,34 @@ namespace Business
             _colorDal = colorDal;
         }
 
-        public List<Color> GetAll()
+        public IResult Add(Color color)
         {
-            return _colorDal.GetAll();
+            _colorDal.Add(color);
+            return new SuccessResult(Messages.ItemAdded);
         }
+
+        public IResult Delete(Color color)
+        {
+            _colorDal.Delete(color);
+            return new SuccessResult(Messages.ItemDeleted);
+        }
+
+        public IResult Update(Color color)
+        {
+            _colorDal.Update(color);
+            return new SuccessResult(Messages.ItemUpdated);
+        }
+
+        public IDataResult<List<Color>> GetAll()
+        {
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
+        }
+
+        public IDataResult<List<Color>> GetById(int id)
+        {
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(x => x.Id == id));
+        }
+
+
     }
 }
