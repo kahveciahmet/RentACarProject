@@ -9,7 +9,7 @@ namespace Business
         IResult Delete(Car car);
         IResult Update(Car car);
         IDataResult<List<Car>> GetAll();
-        IDataResult<List<Car>> GetById(int id);
+        IDataResult<Car> GetById(int id);
         IDataResult<List<Car>> GetAllByBrandId(int id);
         IDataResult<List<CarDto>> GetCarDetails();
     }

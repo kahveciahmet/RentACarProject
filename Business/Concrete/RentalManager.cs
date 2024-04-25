@@ -39,9 +39,9 @@ namespace Business
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        public IDataResult<List<Rental>> GetById(int id)
+        public IDataResult<Rental> GetById(int id)
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(x => x.Id == id));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(x => x.Id == id));
         }
 
 

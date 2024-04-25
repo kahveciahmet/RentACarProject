@@ -9,7 +9,7 @@ namespace Business
         IResult Delete(Color color);
         IResult Update(Color color);
         IDataResult<List<Color>> GetAll();
-        IDataResult<List<Color>> GetById(int id);
+        IDataResult<Color> GetById(int id);
 
     }
 }

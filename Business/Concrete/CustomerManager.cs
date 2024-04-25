@@ -36,9 +36,9 @@ namespace Business
             return new SuccessDataResult<List<Customer>>(_customerDal.GetAll());
         }
 
-        public IDataResult<List<Customer>> GetById(int id)
+        public IDataResult<Customer> GetById(int id)
         {
-            return new SuccessDataResult<List<Customer>>(_customerDal.GetAll(x => x.Id == id));
+            return new SuccessDataResult<Customer>(_customerDal.Get(x => x.Id == id));
         }
 
 

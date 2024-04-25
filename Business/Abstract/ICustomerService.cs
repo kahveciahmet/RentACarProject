@@ -9,6 +9,6 @@ namespace Business
         IResult Delete(Customer customer);
         IResult Update(Customer customer);
         IDataResult<List<Customer>> GetAll();
-        IDataResult<List<Customer>> GetById(int id);
+        IDataResult<Customer> GetById(int id);
     }
 }

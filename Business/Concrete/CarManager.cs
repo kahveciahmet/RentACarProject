@@ -42,9 +42,9 @@ namespace Business
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(x=>x.BrandId == id));
         }
 
-        public IDataResult<List<Car>> GetById(int id)
+        public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x=>x.Id == id));
+            return new SuccessDataResult<Car>(_carDal.Get(x => x.Id == id));
         }
 
         public IDataResult<List<CarDto>> GetCarDetails()

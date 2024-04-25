@@ -37,9 +37,9 @@ namespace Business
             return new SuccessDataResult<List<Color>>(_colorDal.GetAll());
         }
 
-        public IDataResult<List<Color>> GetById(int id)
+        public IDataResult<Color> GetById(int id)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(x => x.Id == id));
+            return new SuccessDataResult<Color>(_colorDal.Get(x => x.Id == id));
         }
 
 
