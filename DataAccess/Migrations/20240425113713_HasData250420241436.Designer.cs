@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDB))]
-    partial class RentACarDBModelSnapshot : ModelSnapshot
+    [Migration("20240425113713_HasData250420241436")]
+    partial class HasData250420241436
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,17 +131,6 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            BrandId = 3,
-                            ColorId = 4,
-                            DailyPrice = 3500m,
-                            Description = "Volvo S90 Sedan 2022 Model",
-                            IsActive = true,
-                            IsDeleted = false,
-                            ModelYear = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -220,32 +212,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Customers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CompanyName = "Ahmet Lojistik",
-                            IsActive = true,
-                            IsDeleted = false,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CompanyName = "Ebru Lojistik",
-                            IsActive = true,
-                            IsDeleted = false,
-                            UserId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CompanyName = "Metin Lojistik",
-                            IsActive = true,
-                            IsDeleted = false,
-                            UserId = 3
-                        });
                 });
 
             modelBuilder.Entity("Entities.Rental", b =>
@@ -281,38 +247,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Rentals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CarId = 1,
-                            CustomerId = 1,
-                            IsActive = true,
-                            IsDeleted = false,
-                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CarId = 3,
-                            CustomerId = 2,
-                            IsActive = true,
-                            IsDeleted = false,
-                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CarId = 2,
-                            CustomerId = 3,
-                            IsActive = true,
-                            IsDeleted = false,
-                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("Entities.User", b =>
@@ -348,38 +282,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "ahmettkkahveci@gmail.com",
-                            FirstName = "Ahmet",
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastName = "Kahveci",
-                            Password = "123456"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "ebrukucuk024@gmail.com",
-                            FirstName = "Ebru",
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastName = "Küçük",
-                            Password = "123456"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Email = "metsinpeace@gmail.com",
-                            FirstName = "Metin",
-                            IsActive = true,
-                            IsDeleted = false,
-                            LastName = "Ata",
-                            Password = "123456"
-                        });
                 });
 
             modelBuilder.Entity("Entities.Car", b =>

@@ -1,6 +1,7 @@
 
 using Business;
 using DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace RentACarWebAPI
@@ -12,6 +13,8 @@ namespace RentACarWebAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+
+
 
             builder.Services.AddControllers();
             builder.Services.AddSingleton<IBrandService, BrandManager>();
@@ -26,6 +29,12 @@ namespace RentACarWebAPI
             builder.Services.AddSingleton<IUserDal, EfUserDal>();
             builder.Services.AddSingleton<ICustomerService, CustomerManager>();
             builder.Services.AddSingleton<ICustomerDal, EfCustomerDal>();
+
+            builder.Services.AddDbContext<RentACarDB>(options =>
+            {
+                options.UseSqlServer(StaticData.ConnectionString);
+            });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(Options =>
@@ -53,6 +62,12 @@ namespace RentACarWebAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<RentACarDB>();
+                dbContext.Database.Migrate();
+            }
 
 
             app.MapControllers();
