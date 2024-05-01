@@ -1,4 +1,6 @@
 ﻿using Business.Constants;
+using Business.ValidationRules;
+using Core.Aspects;
 using Core.Utilities;
 using DataAccess;
 using Entities;
@@ -14,6 +16,7 @@ namespace Business
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
