@@ -15,6 +15,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<ColorManager>().As<IColorService>();
             builder.RegisterType<EfColorDal>().As<IColorDal>();
+
+            builder.RegisterType<CarImageManager>().As<ICarImageService>();
+            builder.RegisterType<EfCarImageDal>().As<ICarImageDal>();
             
             builder.RegisterType<CarManager>().As<ICarService>();
             builder.RegisterType<EfCarDal>().As<ICarDal>();
