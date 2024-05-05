@@ -1,5 +1,4 @@
 ﻿using Core.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities
 {
@@ -11,8 +10,5 @@ namespace Entities
         public DateTime? Date { get; set; }
 
         //Relational properties
-
-        [ForeignKey("CarId")]
-        public virtual Car Car { get; set; }
     }
 }

@@ -48,8 +48,8 @@ namespace RentACarWebAPI.Controllers
         /// Bu API sayesinde kiralama bilgileri ekleyebilirsiniz.
         /// </summary>
         /// <returns></returns>
-        [HttpPost("Add")]
-        public IActionResult Add(IFormFile file, CarImage carImage)
+        [HttpPost("add")]
+        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
         {
             var result = _carImageService.Add(file, carImage);
             if (result.IsSuccess)

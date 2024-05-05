@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDB))]
-    [Migration("20240425113713_HasData250420241436")]
-    partial class HasData250420241436
+    [Migration("20240505170851_New2050520242008")]
+    partial class New2050520242008
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,6 +68,13 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Volvo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Nissan"
                         });
                 });
 
@@ -131,7 +138,54 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BrandId = 3,
+                            ColorId = 4,
+                            DailyPrice = 3500m,
+                            Description = "Volvo S90 Sedan 2022 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BrandId = 4,
+                            ColorId = 5,
+                            DailyPrice = 6000m,
+                            Description = "Nissan GT-R R35 2016 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("Entities.CarImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("CarImages");
                 });
 
             modelBuilder.Entity("Entities.Color", b =>
@@ -184,6 +238,13 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Red"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Midnight Purple"
                         });
                 });
 
@@ -212,6 +273,40 @@ namespace DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyName = "Ahmet Lojistik",
+                            IsActive = true,
+                            IsDeleted = false,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyName = "Ebru Lojistik",
+                            IsActive = true,
+                            IsDeleted = false,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CompanyName = "Metin Lojistik",
+                            IsActive = true,
+                            IsDeleted = false,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CompanyName = "Berkay Lojistik",
+                            IsActive = true,
+                            IsDeleted = false,
+                            UserId = 4
+                        });
                 });
 
             modelBuilder.Entity("Entities.Rental", b =>
@@ -247,6 +342,48 @@ namespace DataAccess.Migrations
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Rentals");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 9,
+                            CarId = 4,
+                            CustomerId = 1,
+                            IsActive = true,
+                            IsDeleted = false,
+                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarId = 3,
+                            CustomerId = 2,
+                            IsActive = true,
+                            IsDeleted = false,
+                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CarId = 2,
+                            CustomerId = 3,
+                            IsActive = true,
+                            IsDeleted = false,
+                            RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 1,
+                            CustomerId = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            RentDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReturnDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Entities.User", b =>
@@ -282,6 +419,48 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "ahmettkkahveci@gmail.com",
+                            FirstName = "Ahmet",
+                            IsActive = true,
+                            IsDeleted = false,
+                            LastName = "Kahveci",
+                            Password = "123456"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "ebrukucuk024@gmail.com",
+                            FirstName = "Ebru",
+                            IsActive = true,
+                            IsDeleted = false,
+                            LastName = "Küçük",
+                            Password = "123456"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "metsinpeace@gmail.com",
+                            FirstName = "Metin",
+                            IsActive = true,
+                            IsDeleted = false,
+                            LastName = "Ata",
+                            Password = "123456"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "berkaycamur61@gmail.com",
+                            FirstName = "Berkay",
+                            IsActive = true,
+                            IsDeleted = false,
+                            LastName = "Çamur",
+                            Password = "123456"
+                        });
                 });
 
             modelBuilder.Entity("Entities.Car", b =>
@@ -301,6 +480,17 @@ namespace DataAccess.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.CarImage", b =>
+                {
+                    b.HasOne("Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("Entities.Customer", b =>

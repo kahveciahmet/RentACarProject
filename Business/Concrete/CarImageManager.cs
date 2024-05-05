@@ -15,23 +15,22 @@ namespace Business
             _carImageDal = carImageDal;
         }
 
-        public IResult Add(IFormFile file, CarImage carImage)
+        public IResult Add(IFormFile file, CarImage carImage, int carId)
         {
-            carImage.ImagePath = ImageHelper.AddImage(file, "carimages");
+            FileHelper fileHelper = new FileHelper();
+            carImage.ImagePath = fileHelper.Add(file, "wwwroot\\Images\\CarImages");
             carImage.Date = DateTime.Now;
+            carImage.Id = carId;
             _carImageDal.Add(carImage);
-            return new SuccessResult(Messages.ItemAdded);
+            return new SuccessResult("Resim başarıyla yüklendi");
         }
 
         public IResult Delete(CarImage carImage)
         {
-            string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", carImage.ImagePath);
-            if (File.Exists(imagePath))
-            {
-                _carImageDal.Delete(carImage);
-                return new SuccessResult(Messages.ItemDeleted);
-            }
-            return new ErrorResult();
+            FileHelper fileHelper = new FileHelper();
+            fileHelper.Delete("wwwroot\\Images\\CarImages" + carImage.ImagePath);
+            _carImageDal.Delete(carImage);
+            return new SuccessResult();
         }
 
         public IResult Update(CarImage carImage)

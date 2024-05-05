@@ -65,6 +65,13 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Volvo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Nissan"
                         });
                 });
 
@@ -139,6 +146,17 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             ModelYear = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BrandId = 4,
+                            ColorId = 5,
+                            DailyPrice = 6000m,
+                            Description = "Nissan GT-R R35 2016 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -161,8 +179,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CarId");
 
                     b.ToTable("CarImages");
                 });
@@ -217,6 +233,13 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Red"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Midnight Purple"
                         });
                 });
 
@@ -270,6 +293,14 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CompanyName = "Berkay Lojistik",
+                            IsActive = true,
+                            IsDeleted = false,
+                            UserId = 4
                         });
                 });
 
@@ -310,8 +341,8 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CarId = 1,
+                            Id = 9,
+                            CarId = 4,
                             CustomerId = 1,
                             IsActive = true,
                             IsDeleted = false,
@@ -320,7 +351,7 @@ namespace DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 2,
+                            Id = 10,
                             CarId = 3,
                             CustomerId = 2,
                             IsActive = true,
@@ -330,13 +361,23 @@ namespace DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 11,
                             CarId = 2,
                             CustomerId = 3,
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReturnDate = new DateTime(2024, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CarId = 1,
+                            CustomerId = 4,
+                            IsActive = true,
+                            IsDeleted = false,
+                            RentDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReturnDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -404,6 +445,16 @@ namespace DataAccess.Migrations
                             IsDeleted = false,
                             LastName = "Ata",
                             Password = "123456"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "berkaycamur61@gmail.com",
+                            FirstName = "Berkay",
+                            IsActive = true,
+                            IsDeleted = false,
+                            LastName = "Çamur",
+                            Password = "123456"
                         });
                 });
 
@@ -424,17 +475,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("Color");
-                });
-
-            modelBuilder.Entity("Entities.CarImage", b =>
-                {
-                    b.HasOne("Entities.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("Entities.Customer", b =>
