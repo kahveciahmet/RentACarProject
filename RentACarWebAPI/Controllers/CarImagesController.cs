@@ -48,7 +48,7 @@ namespace RentACarWebAPI.Controllers
         /// Bu API sayesinde kiralama bilgileri ekleyebilirsiniz.
         /// </summary>
         /// <returns></returns>
-        [HttpPost("add")]
+        [HttpPost("Add")]
         public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
         {
             var result = _carImageService.Add(file, carImage);
@@ -66,7 +66,8 @@ namespace RentACarWebAPI.Controllers
         [HttpPost("Delete")]
         public IActionResult Delete(CarImage carImage)
         {
-            var result = _carImageService.Delete(carImage);
+            var carDeleteImage = _carImageService.GetById(carImage.Id).Data;
+            var result = _carImageService.Delete(carDeleteImage);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -79,9 +80,9 @@ namespace RentACarWebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("Update")]
-        public IActionResult Update(CarImage carImage)
+        public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.Update(carImage);
+            var result = _carImageService.Update(file,carImage);
             if (result.IsSuccess)
             {
                 return Ok(result);

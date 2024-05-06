@@ -8,5 +8,6 @@
         public static string RentError = "To rent the car, the car must be returned.";
         public static string ItemNotExists = "There is no such item";
         public static string ItemAlreadyExists = "The same item already exists.";
+        public static string ImageLimitExceeded = "You cant add more than 5 image to 1 car.";
     }
 }
