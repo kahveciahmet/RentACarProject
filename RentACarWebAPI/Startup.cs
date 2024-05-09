@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Core.DependencyResolvers;
+using Core.Extensions;
+using Core.Utilities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -25,20 +28,66 @@ namespace WebAPI
 
             services.AddCors();
 
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
-
-           services.AddSwaggerGen(Options =>
-            {
-                Options.SwaggerDoc("v1",
-                    new Microsoft.OpenApi.Models.OpenApiInfo
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        Title = "Kahveci RentACar",
-                        Version = "v1"
-                    });
-                var filename = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
-                var filepath = Path.Combine(AppContext.BaseDirectory, filename);
-                Options.IncludeXmlComments(filepath);
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = tokenOptions.Issuer,
+                        ValidAudience = tokenOptions.Audience,
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey),
+                    };
+                });
+
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
             });
+
+            services.AddSwaggerGen(c =>
+             {
+                 c.SwaggerDoc("v1",
+                     new Microsoft.OpenApi.Models.OpenApiInfo
+                     {
+                         Title = "Kahveci RentACar",
+                         Version = "v1"
+                     });
+                 var filename = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+                 var filepath = Path.Combine(AppContext.BaseDirectory, filename);
+                 c.IncludeXmlComments(filepath);
+
+                 var securityScheme = new OpenApiSecurityScheme
+                 {
+                     Name = "Authorization",
+                     Description = "JWT Authorization header using the Bearer scheme.",
+                     Type = SecuritySchemeType.Http,
+                     Scheme = "bearer",
+                     BearerFormat = "JWT"
+                 };
+                 c.AddSecurityDefinition("Bearer", securityScheme);
+
+                 var securityRequirement = new OpenApiSecurityRequirement
+                 {
+                     {
+                         new OpenApiSecurityScheme
+                         {
+                             Reference = new OpenApiReference
+                             {
+                                 Type = ReferenceType.SecurityScheme,
+                                 Id = "Bearer"
+                             }
+                         },
+                         new string[]{ }
+                     }
+                 };
+                 c.AddSecurityRequirement(securityRequirement);
+             });
 
         }
 

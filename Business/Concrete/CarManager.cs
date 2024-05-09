@@ -1,4 +1,5 @@
-﻿using Business.Constants;
+﻿using Business.BusinessAspects;
+using Business.Constants;
 using Business.ValidationRules;
 using Core.Aspects;
 using Core.Utilities;
@@ -16,6 +17,7 @@ namespace Business
             _carDal = carDal;
         }
 
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {

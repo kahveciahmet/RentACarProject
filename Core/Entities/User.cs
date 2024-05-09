@@ -11,6 +11,12 @@
         public bool Status { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
-
+        public User()
+        {
+            PasswordHash = new byte[] { };
+            PasswordSalt = new byte[] { };
+        }
     }
+
+    
 }
