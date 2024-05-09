@@ -1,10 +1,10 @@
 ﻿using Core.DataAccess;
-using Entities;
+using Core.Entities;
 
 namespace DataAccess
 {
     public interface IUserDal : IEntityRepository<User>
     {
-
+        List<OperationClaim> GetClaims(User user);
     }
 }

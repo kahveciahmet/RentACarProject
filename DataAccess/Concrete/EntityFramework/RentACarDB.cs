@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Core.Entities;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
@@ -27,6 +28,8 @@ namespace DataAccess
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,10 +56,10 @@ namespace DataAccess
             );
 
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, FirstName = "Ahmet", LastName = "Kahveci", Email = "ahmettkkahveci@gmail.com", Password = "123456", IsActive = true, IsDeleted = false },
-                new User { Id = 2, FirstName = "Ebru", LastName = "Küçük", Email = "ebrukucuk024@gmail.com", Password = "123456", IsActive = true, IsDeleted = false },
-                new User { Id = 3, FirstName = "Metin", LastName = "Ata", Email = "metsinpeace@gmail.com", Password = "123456", IsActive = true, IsDeleted = false },
-                new User { Id = 4, FirstName = "Berkay", LastName = "Çamur", Email = "berkaycamur61@gmail.com", Password = "123456", IsActive = true, IsDeleted = false }
+                new User { Id = 1, FirstName = "Ahmet", LastName = "Kahveci", Email = "ahmettkkahveci@gmail.com", /*Password = "123456",*/ IsActive = true, IsDeleted = false },
+                new User { Id = 2, FirstName = "Ebru", LastName = "Küçük", Email = "ebrukucuk024@gmail.com", /*Password = "123456",*/ IsActive = true, IsDeleted = false },
+                new User { Id = 3, FirstName = "Metin", LastName = "Ata", Email = "metsinpeace@gmail.com", /*Password = "123456",*/ IsActive = true, IsDeleted = false },
+                new User { Id = 4, FirstName = "Berkay", LastName = "Çamur", Email = "berkaycamur61@gmail.com", /*Password = "123456",*/ IsActive = true, IsDeleted = false }
             );
 
             modelBuilder.Entity<Customer>().HasData(

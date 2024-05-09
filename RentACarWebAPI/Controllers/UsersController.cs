@@ -1,5 +1,5 @@
 ﻿using Business;
-using Entities;
+using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RentACarWebAPI.Controllers

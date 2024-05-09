@@ -2,7 +2,7 @@
 {
     public class SuccessDataResult<T>:DataResult<T>
     {
-        public SuccessDataResult(string message,T data):base(true,message,default)
+        public SuccessDataResult(T data, string message):base(true,message,default)
         {
             
         }

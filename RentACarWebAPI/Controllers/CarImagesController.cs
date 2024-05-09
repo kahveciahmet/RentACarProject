@@ -49,9 +49,9 @@ namespace RentACarWebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost("Add")]
-        public IActionResult Add([FromForm] IFormFile file, [FromForm] CarImage carImage)
+        public IActionResult Add(CarImage carImage)
         {
-            var result = _carImageService.Add(file, carImage);
+            var result = _carImageService.Add(carImage.file, carImage);
             if (result.IsSuccess)
             {
                 return Ok(result);

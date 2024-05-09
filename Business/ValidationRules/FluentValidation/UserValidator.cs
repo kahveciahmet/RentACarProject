@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using Core.Entities;
+using Entities;
 using FluentValidation;
 
 namespace Business.ValidationRules
