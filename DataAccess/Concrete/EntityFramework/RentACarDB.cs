@@ -20,7 +20,6 @@ namespace DataAccess
             optionsBuilder.UseSqlServer(StaticData.ConnectionString);
         }
 
-
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -100,6 +99,16 @@ namespace DataAccess
                  .HasOne(r => r.Customer)
                  .WithMany()
                  .HasForeignKey(r => r.CustomerId);
+
+            modelBuilder.Entity<UserOperationClaim>()
+                 .HasOne(u => u.User)
+                 .WithMany()
+                 .HasForeignKey(u => u.UserId);
+
+            modelBuilder.Entity<UserOperationClaim>()
+                 .HasOne(u => u.User)
+                 .WithMany()
+                 .HasForeignKey(u => u.OperationClaimId);
 
             modelBuilder.Entity<Car>()
         .Property(c => c.DailyPrice)
