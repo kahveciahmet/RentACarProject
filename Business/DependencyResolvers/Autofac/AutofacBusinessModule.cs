@@ -19,7 +19,7 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<CarImageManager>().As<ICarImageService>();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>();
-            
+
             builder.RegisterType<CarManager>().As<ICarService>();
             builder.RegisterType<EfCarDal>().As<ICarDal>();
 

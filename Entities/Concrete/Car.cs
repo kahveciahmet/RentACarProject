@@ -16,11 +16,11 @@ namespace Entities
 
         //Relational properties
 
-        [ForeignKey("ColorId")]
-        public Color Color { get; set; }
+        //[ForeignKey("ColorId")]
+        //public Color Color { get; set; }
 
-        [ForeignKey("BrandId")]
-        public Brand Brand { get; set; }
+        //[ForeignKey("BrandId")]
+        //public Brand Brand { get; set; }
     }
 
 

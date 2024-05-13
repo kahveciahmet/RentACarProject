@@ -15,10 +15,10 @@ namespace Entities
 
         //Relational properties
 
-        [ForeignKey("CarId")]
-        public virtual Car Car { get; set; }
+        //[ForeignKey("CarId")]
+        //public virtual Car Car { get; set; }
 
-        [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
+        //[ForeignKey("CustomerId")]
+        //public virtual Customer Customer { get; set; }
     }
 }

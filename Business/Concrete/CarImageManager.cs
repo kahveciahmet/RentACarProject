@@ -1,4 +1,7 @@
-﻿using Business.Constants;
+﻿using Business.BusinessAspects;
+using Business.Constants;
+using Business.ValidationRules;
+using Core.Aspects;
 using Core.Utilities;
 using DataAccess;
 using Entities;
@@ -15,6 +18,9 @@ namespace Business
             _carImageDal = carImageDal;
         }
 
+        [SecuredOperation("carimage.add,admin")]
+        [TransactionScopeAspect]
+        [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
             BusinessRules.Run(CheckCarImageLimit(carImage.CarId));
@@ -25,6 +31,8 @@ namespace Business
             return new SuccessResult(Messages.ItemAdded);
         }
 
+        [SecuredOperation("carimage.delete,admin")]
+        [TransactionScopeAspect]
         public IResult Delete(CarImage carImage)
         {
             FileHelper fileHelper = new FileHelper();
@@ -33,6 +41,8 @@ namespace Business
             return new SuccessResult(Messages.ItemDeleted);
         }
 
+        [SecuredOperation("carimage.update,admin")]
+        [TransactionScopeAspect]
         public IResult Update(IFormFile file, CarImage carImage)
         {
             FileHelper fileHelper = new FileHelper();
@@ -41,6 +51,8 @@ namespace Business
             return new SuccessResult(Messages.ItemUpdated);
         }
 
+        [CacheAspect]
+        [PerformanceAspect(5)]
         public IDataResult<List<CarImage>> GetAll()
         {
             CarImage carImage = new CarImage();

@@ -13,7 +13,7 @@ namespace Entities
 
         //Relational properties
 
-        [ForeignKey("UserId")]
-        public virtual User User { get; set; }
+        //[ForeignKey("UserId")]
+        //public virtual User User { get; set; }
     }
 }

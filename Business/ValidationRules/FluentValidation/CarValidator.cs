@@ -7,7 +7,8 @@ namespace Business.ValidationRules
     {
         public CarValidator()
         {
-            RuleFor(c=>c.DailyPrice).GreaterThan(0);
+            RuleFor(c=>c.BrandId).NotEmpty().GreaterThan(0);
+            RuleFor(c=>c.ColorId).NotEmpty().GreaterThan(0);
         }
     }
 }

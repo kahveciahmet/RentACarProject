@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDB))]
-    partial class RentACarDBModelSnapshot : ModelSnapshot
+    [Migration("20240512010121_User120520240401")]
+    partial class User120520240401
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,96 +71,6 @@ namespace DataAccess.Migrations
                         {
                             Id = 6,
                             Name = "car.update"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "brand.add"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "brand.delete"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "brand.update"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "color.add"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "color.delete"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "color.update"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "rental.add"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "rental.delete"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "rental.update"
-                        },
-                        new
-                        {
-                            Id = 16,
-                            Name = "carimage.add"
-                        },
-                        new
-                        {
-                            Id = 17,
-                            Name = "carimage.delete"
-                        },
-                        new
-                        {
-                            Id = 18,
-                            Name = "carimage.update"
-                        },
-                        new
-                        {
-                            Id = 19,
-                            Name = "user.add"
-                        },
-                        new
-                        {
-                            Id = 20,
-                            Name = "user.delete"
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Name = "user.update"
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Name = "customer.add"
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Name = "customer.delete"
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Name = "customer.update"
                         });
                 });
 
@@ -313,114 +226,6 @@ namespace DataAccess.Migrations
                             Id = 7,
                             OperationClaimId = 3,
                             UserId = 4
-                        },
-                        new
-                        {
-                            Id = 8,
-                            OperationClaimId = 10,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            OperationClaimId = 11,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            OperationClaimId = 12,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 11,
-                            OperationClaimId = 13,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            OperationClaimId = 14,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 13,
-                            OperationClaimId = 15,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 14,
-                            OperationClaimId = 16,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 15,
-                            OperationClaimId = 17,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 16,
-                            OperationClaimId = 18,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 17,
-                            OperationClaimId = 19,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 18,
-                            OperationClaimId = 20,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 19,
-                            OperationClaimId = 21,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 20,
-                            OperationClaimId = 22,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 21,
-                            OperationClaimId = 23,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 22,
-                            OperationClaimId = 24,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 23,
-                            OperationClaimId = 7,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 24,
-                            OperationClaimId = 8,
-                            UserId = 1
-                        },
-                        new
-                        {
-                            Id = 25,
-                            OperationClaimId = 9,
-                            UserId = 1
                         });
                 });
 
@@ -508,6 +313,10 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
 
                     b.ToTable("Cars");
 
@@ -663,6 +472,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Customers");
 
                     b.HasData(
@@ -728,6 +539,10 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CarId");
+
+                    b.HasIndex("CustomerId");
+
                     b.ToTable("Rentals");
 
                     b.HasData(
@@ -771,6 +586,55 @@ namespace DataAccess.Migrations
                             RentDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReturnDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("Entities.Car", b =>
+                {
+                    b.HasOne("Entities.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Color", "Color")
+                        .WithMany()
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.Customer", b =>
+                {
+                    b.HasOne("Core.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.Rental", b =>
+                {
+                    b.HasOne("Entities.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }
