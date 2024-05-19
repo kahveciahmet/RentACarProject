@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDB))]
-    [Migration("20240512010121_User120520240401")]
-    partial class User120520240401
+    [Migration("20240519204556_ModelYears190520242345")]
+    partial class ModelYears190520242345
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,6 +71,96 @@ namespace DataAccess.Migrations
                         {
                             Id = 6,
                             Name = "car.update"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "brand.add"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "brand.delete"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "brand.update"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "color.add"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "color.delete"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "color.update"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "rental.add"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "rental.delete"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "rental.update"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "carimage.add"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "carimage.delete"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "carimage.update"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "user.add"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "user.delete"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "user.update"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "customer.add"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "customer.delete"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "customer.update"
                         });
                 });
 
@@ -226,6 +316,114 @@ namespace DataAccess.Migrations
                             Id = 7,
                             OperationClaimId = 3,
                             UserId = 4
+                        },
+                        new
+                        {
+                            Id = 8,
+                            OperationClaimId = 10,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            OperationClaimId = 11,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            OperationClaimId = 12,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            OperationClaimId = 13,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            OperationClaimId = 14,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            OperationClaimId = 15,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 14,
+                            OperationClaimId = 16,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 15,
+                            OperationClaimId = 17,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            OperationClaimId = 18,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 17,
+                            OperationClaimId = 19,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            OperationClaimId = 20,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 19,
+                            OperationClaimId = 21,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            OperationClaimId = 22,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 21,
+                            OperationClaimId = 23,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 22,
+                            OperationClaimId = 24,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 23,
+                            OperationClaimId = 7,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 24,
+                            OperationClaimId = 8,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 25,
+                            OperationClaimId = 9,
+                            UserId = 1
                         });
                 });
 
@@ -293,8 +491,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ColorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18, 2)");
@@ -309,14 +515,10 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("ModelYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ModelYear")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("ColorId");
 
                     b.ToTable("Cars");
 
@@ -325,45 +527,53 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
+                            BrandName = "BMW",
                             ColorId = 3,
+                            ColorName = "Black",
                             DailyPrice = 3700m,
                             Description = "BMW 520i Sedan 2023 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2023
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 2,
+                            BrandName = "Mercedes-Benz",
                             ColorId = 1,
+                            ColorName = "White",
                             DailyPrice = 4200m,
                             Description = "Mercedes-Benz GLC180 SUV 2024 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2024
                         },
                         new
                         {
                             Id = 3,
                             BrandId = 3,
+                            BrandName = "Volvo",
                             ColorId = 4,
+                            ColorName = "Red",
                             DailyPrice = 3500m,
                             Description = "Volvo S90 Sedan 2022 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2022
                         },
                         new
                         {
                             Id = 4,
                             BrandId = 4,
+                            BrandName = "Nissan",
                             ColorId = 5,
+                            ColorName = "Midnight Purple",
                             DailyPrice = 6000m,
                             Description = "Nissan GT-R R35 2016 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2024
                         });
                 });
 
@@ -470,9 +680,11 @@ namespace DataAccess.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Customers");
 
@@ -483,7 +695,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Ahmet Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 1
+                            UserId = 1,
+                            UserName = "Ahmet Kahveci"
                         },
                         new
                         {
@@ -491,7 +704,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Ebru Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 2
+                            UserId = 2,
+                            UserName = "Ebru Küçük"
                         },
                         new
                         {
@@ -499,7 +713,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Metin Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 3
+                            UserId = 3,
+                            UserName = "Metin Ata"
                         },
                         new
                         {
@@ -507,7 +722,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Berkay Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 4
+                            UserId = 4,
+                            UserName = "Berkay Çamur"
                         });
                 });
 
@@ -522,8 +738,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CarName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -539,10 +763,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Rentals");
 
                     b.HasData(
@@ -550,7 +770,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 9,
                             CarId = 4,
+                            CarName = "Nissan GT-R R35 2016 Model",
                             CustomerId = 1,
+                            CustomerName = "Ahmet Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -560,7 +782,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 10,
                             CarId = 3,
+                            CarName = "Volvo S90 Sedan 2022 Model",
                             CustomerId = 2,
+                            CustomerName = "Ebru Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -570,7 +794,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 11,
                             CarId = 2,
+                            CarName = "Mercedes-Benz GLC180 SUV 2024 Model",
                             CustomerId = 3,
+                            CustomerName = "Metin Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -580,61 +806,14 @@ namespace DataAccess.Migrations
                         {
                             Id = 12,
                             CarId = 1,
+                            CarName = "BMW 520i Sedan 2023 Model",
                             CustomerId = 4,
+                            CustomerName = "Berkay Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ReturnDate = new DateTime(2024, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
-                });
-
-            modelBuilder.Entity("Entities.Car", b =>
-                {
-                    b.HasOne("Entities.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Color", "Color")
-                        .WithMany()
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
-
-                    b.Navigation("Color");
-                });
-
-            modelBuilder.Entity("Entities.Customer", b =>
-                {
-                    b.HasOne("Core.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Entities.Rental", b =>
-                {
-                    b.HasOne("Entities.Car", "Car")
-                        .WithMany()
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-
-                    b.Navigation("Customer");
                 });
 #pragma warning restore 612, 618
         }

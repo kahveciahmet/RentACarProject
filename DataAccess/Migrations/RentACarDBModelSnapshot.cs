@@ -488,8 +488,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
 
+                    b.Property<string>("BrandName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ColorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18, 2)");
@@ -504,8 +512,8 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("ModelYear")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("ModelYear")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -516,45 +524,53 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
+                            BrandName = "BMW",
                             ColorId = 3,
+                            ColorName = "Black",
                             DailyPrice = 3700m,
                             Description = "BMW 520i Sedan 2023 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2023
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 2,
+                            BrandName = "Mercedes-Benz",
                             ColorId = 1,
+                            ColorName = "White",
                             DailyPrice = 4200m,
                             Description = "Mercedes-Benz GLC180 SUV 2024 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2024
                         },
                         new
                         {
                             Id = 3,
                             BrandId = 3,
+                            BrandName = "Volvo",
                             ColorId = 4,
+                            ColorName = "Red",
                             DailyPrice = 3500m,
                             Description = "Volvo S90 Sedan 2022 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2022, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2022
                         },
                         new
                         {
                             Id = 4,
                             BrandId = 4,
+                            BrandName = "Nissan",
                             ColorId = 5,
+                            ColorName = "Midnight Purple",
                             DailyPrice = 6000m,
                             Description = "Nissan GT-R R35 2016 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            ModelYear = 2024
                         });
                 });
 
@@ -661,6 +677,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
@@ -672,7 +692,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Ahmet Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 1
+                            UserId = 1,
+                            UserName = "Ahmet Kahveci"
                         },
                         new
                         {
@@ -680,7 +701,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Ebru Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 2
+                            UserId = 2,
+                            UserName = "Ebru Küçük"
                         },
                         new
                         {
@@ -688,7 +710,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Metin Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 3
+                            UserId = 3,
+                            UserName = "Metin Ata"
                         },
                         new
                         {
@@ -696,7 +719,8 @@ namespace DataAccess.Migrations
                             CompanyName = "Berkay Lojistik",
                             IsActive = true,
                             IsDeleted = false,
-                            UserId = 4
+                            UserId = 4,
+                            UserName = "Berkay Çamur"
                         });
                 });
 
@@ -711,8 +735,16 @@ namespace DataAccess.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CarName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -735,7 +767,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 9,
                             CarId = 4,
+                            CarName = "Nissan GT-R R35 2016 Model",
                             CustomerId = 1,
+                            CustomerName = "Ahmet Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -745,7 +779,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 10,
                             CarId = 3,
+                            CarName = "Volvo S90 Sedan 2022 Model",
                             CustomerId = 2,
+                            CustomerName = "Ebru Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -755,7 +791,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 11,
                             CarId = 2,
+                            CarName = "Mercedes-Benz GLC180 SUV 2024 Model",
                             CustomerId = 3,
+                            CustomerName = "Metin Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -765,7 +803,9 @@ namespace DataAccess.Migrations
                         {
                             Id = 12,
                             CarId = 1,
+                            CarName = "BMW 520i Sedan 2023 Model",
                             CustomerId = 4,
+                            CustomerName = "Berkay Lojistik",
                             IsActive = true,
                             IsDeleted = false,
                             RentDate = new DateTime(2024, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

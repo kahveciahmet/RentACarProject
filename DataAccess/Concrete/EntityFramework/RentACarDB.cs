@@ -43,10 +43,10 @@ namespace DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Car>().HasData(
-                new Car { Id = 1, BrandId = 1, ColorId = 3, DailyPrice = 3700, Description = "BMW 520i Sedan 2023 Model", ModelYear = new DateTime(2023, 1, 1), IsActive = true, IsDeleted = false },
-                new Car { Id = 2, BrandId = 2, ColorId = 1, DailyPrice = 4200, Description = "Mercedes-Benz GLC180 SUV 2024 Model", ModelYear = new DateTime(2024, 1, 1), IsActive = true, IsDeleted = false },
-                new Car { Id = 3, BrandId = 3, ColorId = 4, DailyPrice = 3500, Description = "Volvo S90 Sedan 2022 Model", ModelYear = new DateTime(2022, 1, 1), IsActive = true, IsDeleted = false },
-                new Car { Id = 4, BrandId = 4, ColorId = 5, DailyPrice = 6000, Description = "Nissan GT-R R35 2016 Model", ModelYear = new DateTime(2024, 1, 1), IsActive = true, IsDeleted = false }
+                new Car { Id = 1, BrandId = 1, ColorId = 3, DailyPrice = 3700, Description = "BMW 520i Sedan 2023 Model",BrandName = "BMW",ColorName = "Black", ModelYear = 2023, IsActive = true, IsDeleted = false },
+                new Car { Id = 2, BrandId = 2, ColorId = 1, DailyPrice = 4200, Description = "Mercedes-Benz GLC180 SUV 2024 Model", BrandName = "Mercedes-Benz", ColorName = "White", ModelYear = 2024, IsActive = true, IsDeleted = false },
+                new Car { Id = 3, BrandId = 3, ColorId = 4, DailyPrice = 3500, Description = "Volvo S90 Sedan 2022 Model", ModelYear = 2022, BrandName = "Volvo", ColorName = "Red", IsActive = true, IsDeleted = false },
+                new Car { Id = 4, BrandId = 4, ColorId = 5, DailyPrice = 6000, Description = "Nissan GT-R R35 2016 Model", ModelYear = 2024, BrandName = "Nissan", ColorName = "Midnight Purple", IsActive = true, IsDeleted = false }
             );
 
             modelBuilder.Entity<Color>().HasData(
@@ -72,17 +72,17 @@ namespace DataAccess
             );
 
             modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, UserId = 1, CompanyName = "Ahmet Lojistik", IsActive = true, IsDeleted = false },
-                new Customer { Id = 2, UserId = 2, CompanyName = "Ebru Lojistik", IsActive = true, IsDeleted = false },
-                new Customer { Id = 3, UserId = 3, CompanyName = "Metin Lojistik", IsActive = true, IsDeleted = false },
-                new Customer { Id = 4, UserId = 4, CompanyName = "Berkay Lojistik", IsActive = true, IsDeleted = false }
+                new Customer { Id = 1, UserId = 1, CompanyName = "Ahmet Lojistik",UserName = "Ahmet Kahveci", IsActive = true, IsDeleted = false },
+                new Customer { Id = 2, UserId = 2, CompanyName = "Ebru Lojistik", UserName = "Ebru Küçük",IsActive = true, IsDeleted = false },
+                new Customer { Id = 3, UserId = 3, CompanyName = "Metin Lojistik", UserName = "Metin Ata",IsActive = true, IsDeleted = false },
+                new Customer { Id = 4, UserId = 4, CompanyName = "Berkay Lojistik", UserName = "Berkay Çamur",IsActive = true, IsDeleted = false }
             );
 
             modelBuilder.Entity<Rental>().HasData(
-                new Rental { Id = 9, CarId = 4, CustomerId = 1, RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
-                new Rental { Id = 10, CarId = 3, CustomerId = 2, RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
-                new Rental { Id = 11, CarId = 2, CustomerId = 3, RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
-                new Rental { Id = 12, CarId = 1, CustomerId = 4, RentDate = new DateTime(2024, 05, 01), ReturnDate = new DateTime(2024, 05, 06), IsActive = true, IsDeleted = false }
+                new Rental { Id = 9, CarId = 4,CarName = "Nissan GT-R R35 2016 Model", CustomerId = 1,CustomerName = "Ahmet Lojistik", RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
+                new Rental { Id = 10, CarId = 3, CarName = "Volvo S90 Sedan 2022 Model", CustomerId = 2, CustomerName = "Ebru Lojistik", RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
+                new Rental { Id = 11, CarId = 2, CarName = "Mercedes-Benz GLC180 SUV 2024 Model", CustomerId = 3, CustomerName = "Metin Lojistik", RentDate = new DateTime(2024, 04, 20), ReturnDate = new DateTime(2024, 04, 25), IsActive = true, IsDeleted = false },
+                new Rental { Id = 12, CarId = 1, CarName = "BMW 520i Sedan 2023 Model", CustomerId = 4, CustomerName = "Berkay Lojistik", RentDate = new DateTime(2024, 05, 01), ReturnDate = new DateTime(2024, 05, 06), IsActive = true, IsDeleted = false }
             );
 
             #region OperationClaimDatas
