@@ -13,6 +13,7 @@ namespace Entities
         public int ModelYear { get; set; }
         public decimal DailyPrice { get; set; }
         public string Description { get; set; }
+        public string TransmissionType { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
 

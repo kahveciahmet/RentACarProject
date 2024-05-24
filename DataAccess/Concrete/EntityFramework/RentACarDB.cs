@@ -43,25 +43,47 @@ namespace DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Car>().HasData(
-                new Car { Id = 1, BrandId = 1, ColorId = 3, DailyPrice = 3700, Description = "BMW 520i Sedan 2023 Model",BrandName = "BMW",ColorName = "Black", ModelYear = 2023, IsActive = true, IsDeleted = false },
-                new Car { Id = 2, BrandId = 2, ColorId = 1, DailyPrice = 4200, Description = "Mercedes-Benz GLC180 SUV 2024 Model", BrandName = "Mercedes-Benz", ColorName = "White", ModelYear = 2024, IsActive = true, IsDeleted = false },
-                new Car { Id = 3, BrandId = 3, ColorId = 4, DailyPrice = 3500, Description = "Volvo S90 Sedan 2022 Model", ModelYear = 2022, BrandName = "Volvo", ColorName = "Red", IsActive = true, IsDeleted = false },
-                new Car { Id = 4, BrandId = 4, ColorId = 5, DailyPrice = 6000, Description = "Nissan GT-R R35 2016 Model", ModelYear = 2024, BrandName = "Nissan", ColorName = "Midnight Purple", IsActive = true, IsDeleted = false }
+                new Car { Id = 1, BrandId = 1, ColorId = 3, ColorName = "Black", ModelYear = 2023, Description = "BMW 520i Sedan 2023 Model", BrandName = "BMW", IsActive = true, IsDeleted = false, DailyPrice = 1500, TransmissionType = "Automatic" },
+                new Car { Id = 2, BrandId = 2, ColorId = 2, ColorName = "White", ModelYear = 2024, Description = "Mercedes-Benz GLC180 SUV 2024 Model", BrandName = "Mercedes-Benz", IsActive = true, IsDeleted = false, DailyPrice = 2000, TransmissionType = "Automatic" },
+                new Car { Id = 3, BrandId = 3, ColorId = 4, ColorName = "Red", ModelYear = 2022, Description = "Volvo S90 Sedan 2022 Model", BrandName = "Volvo", IsActive = true, IsDeleted = false, DailyPrice = 1800, TransmissionType = "Automatic" },
+                new Car { Id = 4, BrandId = 4, ColorId = 5, ColorName = "Midnight Purple", ModelYear = 2024, Description = "Nissan GT-R R35 2016 Model", BrandName = "Nissan", IsActive = true, IsDeleted = false, DailyPrice = 2500, TransmissionType = "Automatic" },
+                new Car { Id = 5, BrandId = 5, ColorId = 1, ColorName = "White", ModelYear = 2023, Description = "Toyota Corolla 2023 Model", BrandName = "Toyota", IsActive = true, IsDeleted = false, DailyPrice = 1200, TransmissionType = "Manual" },
+                new Car { Id = 6, BrandId = 6, ColorId = 2, ColorName = "Gray", ModelYear = 2021, Description = "Honda Civic 2021 Model", BrandName = "Honda", IsActive = true, IsDeleted = false, DailyPrice = 1300, TransmissionType = "Automatic" },
+                new Car { Id = 7, BrandId = 7, ColorId = 3, ColorName = "Black", ModelYear = 2020, Description = "Ford Focus 2020 Model", BrandName = "Ford", IsActive = true, IsDeleted = false, DailyPrice = 1400, TransmissionType = "Manual" },
+                new Car { Id = 8, BrandId = 8, ColorId = 4, ColorName = "Red", ModelYear = 2019, Description = "Chevrolet Malibu 2019 Model", BrandName = "Chevrolet", IsActive = true, IsDeleted = false, DailyPrice = 1600, TransmissionType = "Automatic" },
+                new Car { Id = 9, BrandId = 1, ColorId = 5, ColorName = "Midnight Purple", ModelYear = 2018, Description = "BMW 320i 2018 Model", BrandName = "BMW", IsActive = true, IsDeleted = false, DailyPrice = 1500, TransmissionType = "Automatic" },
+                new Car { Id = 10, BrandId = 2, ColorId = 1, ColorName = "White", ModelYear = 2017, Description = "Mercedes-Benz C180 2017 Model", BrandName = "Mercedes-Benz", IsActive = true, IsDeleted = false, DailyPrice = 1400, TransmissionType = "Automatic" },
+                new Car { Id = 11, BrandId = 3, ColorId = 2, ColorName = "Gray", ModelYear = 2016, Description = "Volvo XC60 2016 Model", BrandName = "Volvo", IsActive = true, IsDeleted = false, DailyPrice = 1300, TransmissionType = "Automatic" },
+                new Car { Id = 12, BrandId = 4, ColorId = 3, ColorName = "Black", ModelYear = 2015, Description = "Nissan Altima 2015 Model", BrandName = "Nissan", IsActive = true, IsDeleted = false, DailyPrice = 1200, TransmissionType = "Manual" },
+                new Car { Id = 13, BrandId = 5, ColorId = 4, ColorName = "Red", ModelYear = 2014, Description = "Toyota Camry 2014 Model", BrandName = "Toyota", IsActive = true, IsDeleted = false, DailyPrice = 1300, TransmissionType = "Automatic" },
+                new Car { Id = 14, BrandId = 6, ColorId = 5, ColorName = "Midnight Purple", ModelYear = 2013, Description = "Honda Accord 2013 Model", BrandName = "Honda", IsActive = true, IsDeleted = false, DailyPrice = 1100, TransmissionType = "Manual" },
+                new Car { Id = 15, BrandId = 7, ColorId = 1, ColorName = "White", ModelYear = 2012, Description = "Ford Mustang 2012 Model", BrandName = "Ford", IsActive = true, IsDeleted = false, DailyPrice = 1400, TransmissionType = "Manual" },
+                new Car { Id = 16, BrandId = 8, ColorId = 2, ColorName = "Gray", ModelYear = 2011, Description = "Chevrolet Cruze 2011 Model", BrandName = "Chevrolet", IsActive = true, IsDeleted = false, DailyPrice = 1200, TransmissionType = "Automatic" },
+                new Car { Id = 17, BrandId = 1, ColorId = 3, ColorName = "Black", ModelYear = 2010, Description = "BMW X5 2010 Model", BrandName = "BMW", IsActive = true, IsDeleted = false, DailyPrice = 1500, TransmissionType = "Automatic" },
+                new Car { Id = 18, BrandId = 2, ColorId = 4, ColorName = "Red", ModelYear = 2009, Description = "Mercedes-Benz E200 2009 Model", BrandName = "Mercedes-Benz", IsActive = true, IsDeleted = false, DailyPrice = 1400, TransmissionType = "Automatic" },
+                new Car { Id = 19, BrandId = 3, ColorId = 5, ColorName = "Midnight Purple", ModelYear = 2008, Description = "Volvo V60 2008 Model", BrandName = "Volvo", IsActive = true, IsDeleted = false, DailyPrice = 1300, TransmissionType = "Automatic" },
+                new Car { Id = 20, BrandId = 4, ColorId = 1, ColorName = "White", ModelYear = 2007, Description = "Nissan Sentra 2007 Model", BrandName = "Nissan", IsActive = true, IsDeleted = false, DailyPrice = 1100, TransmissionType = "Manual" }
             );
+
 
             modelBuilder.Entity<Color>().HasData(
                 new Color { Id = 1, Name = "White", IsActive = true, IsDeleted = false },
                 new Color { Id = 2, Name = "Gray", IsActive = true, IsDeleted = false },
                 new Color { Id = 3, Name = "Black", IsActive = true, IsDeleted = false },
                 new Color { Id = 4, Name = "Red", IsActive = true, IsDeleted = false },
-                new Color { Id = 5, Name = "Midnight Purple", IsActive = true, IsDeleted = false }
+                new Color { Id = 5, Name = "Midnight Purple", IsActive = true, IsDeleted = false },
+                new Color { Id = 6, Name = "Blue", IsActive = true, IsDeleted = false }
             );
 
             modelBuilder.Entity<Brand>().HasData(
                 new Brand { Id = 1, Name = "BMW", IsActive = true, IsDeleted = false },
                 new Brand { Id = 2, Name = "Mercedes-Benz", IsActive = true, IsDeleted = false },
                 new Brand { Id = 3, Name = "Volvo", IsActive = true, IsDeleted = false },
-                new Brand { Id = 4, Name = "Nissan", IsActive = true, IsDeleted = false }
+                new Brand { Id = 4, Name = "Nissan", IsActive = true, IsDeleted = false },
+                new Brand { Id = 5, Name = "Toyota", IsActive = true, IsDeleted = false },
+                new Brand { Id = 6, Name = "Honda", IsActive = true, IsDeleted = false },
+                new Brand { Id = 7, Name = "Ford", IsActive = true, IsDeleted = false },
+                new Brand { Id = 8, Name = "Chevrolet", IsActive = true, IsDeleted = false }
             );
 
             modelBuilder.Entity<User>().HasData(

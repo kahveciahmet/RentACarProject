@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarDB))]
-    [Migration("20240519204556_ModelYears190520242345")]
-    partial class ModelYears190520242345
+    [Migration("20240522161941_DatabaseUpdate220520241913")]
+    partial class DatabaseUpdate220520241913
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -477,6 +477,34 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Nissan"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Toyota"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Honda"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Ford"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Chevrolet"
                         });
                 });
 
@@ -518,6 +546,10 @@ namespace DataAccess.Migrations
                     b.Property<int>("ModelYear")
                         .HasColumnType("int");
 
+                    b.Property<string>("TransmissionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Cars");
@@ -530,24 +562,26 @@ namespace DataAccess.Migrations
                             BrandName = "BMW",
                             ColorId = 3,
                             ColorName = "Black",
-                            DailyPrice = 3700m,
+                            DailyPrice = 1500m,
                             Description = "BMW 520i Sedan 2023 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = 2023
+                            ModelYear = 2023,
+                            TransmissionType = "Automatic"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 2,
                             BrandName = "Mercedes-Benz",
-                            ColorId = 1,
+                            ColorId = 2,
                             ColorName = "White",
-                            DailyPrice = 4200m,
+                            DailyPrice = 2000m,
                             Description = "Mercedes-Benz GLC180 SUV 2024 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = 2024
+                            ModelYear = 2024,
+                            TransmissionType = "Automatic"
                         },
                         new
                         {
@@ -556,11 +590,12 @@ namespace DataAccess.Migrations
                             BrandName = "Volvo",
                             ColorId = 4,
                             ColorName = "Red",
-                            DailyPrice = 3500m,
+                            DailyPrice = 1800m,
                             Description = "Volvo S90 Sedan 2022 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = 2022
+                            ModelYear = 2022,
+                            TransmissionType = "Automatic"
                         },
                         new
                         {
@@ -569,11 +604,236 @@ namespace DataAccess.Migrations
                             BrandName = "Nissan",
                             ColorId = 5,
                             ColorName = "Midnight Purple",
-                            DailyPrice = 6000m,
+                            DailyPrice = 2500m,
                             Description = "Nissan GT-R R35 2016 Model",
                             IsActive = true,
                             IsDeleted = false,
-                            ModelYear = 2024
+                            ModelYear = 2024,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BrandId = 5,
+                            BrandName = "Toyota",
+                            ColorId = 1,
+                            ColorName = "White",
+                            DailyPrice = 1200m,
+                            Description = "Toyota Corolla 2023 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2023,
+                            TransmissionType = "Manual"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BrandId = 6,
+                            BrandName = "Honda",
+                            ColorId = 2,
+                            ColorName = "Gray",
+                            DailyPrice = 1300m,
+                            Description = "Honda Civic 2021 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2021,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BrandId = 7,
+                            BrandName = "Ford",
+                            ColorId = 3,
+                            ColorName = "Black",
+                            DailyPrice = 1400m,
+                            Description = "Ford Focus 2020 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2020,
+                            TransmissionType = "Manual"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BrandId = 8,
+                            BrandName = "Chevrolet",
+                            ColorId = 4,
+                            ColorName = "Red",
+                            DailyPrice = 1600m,
+                            Description = "Chevrolet Malibu 2019 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2019,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BrandId = 1,
+                            BrandName = "BMW",
+                            ColorId = 5,
+                            ColorName = "Midnight Purple",
+                            DailyPrice = 1500m,
+                            Description = "BMW 320i 2018 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2018,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BrandId = 2,
+                            BrandName = "Mercedes-Benz",
+                            ColorId = 1,
+                            ColorName = "White",
+                            DailyPrice = 1400m,
+                            Description = "Mercedes-Benz C180 2017 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2017,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BrandId = 3,
+                            BrandName = "Volvo",
+                            ColorId = 2,
+                            ColorName = "Gray",
+                            DailyPrice = 1300m,
+                            Description = "Volvo XC60 2016 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2016,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BrandId = 4,
+                            BrandName = "Nissan",
+                            ColorId = 3,
+                            ColorName = "Black",
+                            DailyPrice = 1200m,
+                            Description = "Nissan Altima 2015 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2015,
+                            TransmissionType = "Manual"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BrandId = 5,
+                            BrandName = "Toyota",
+                            ColorId = 4,
+                            ColorName = "Red",
+                            DailyPrice = 1300m,
+                            Description = "Toyota Camry 2014 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2014,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BrandId = 6,
+                            BrandName = "Honda",
+                            ColorId = 5,
+                            ColorName = "Midnight Purple",
+                            DailyPrice = 1100m,
+                            Description = "Honda Accord 2013 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2013,
+                            TransmissionType = "Manual"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BrandId = 7,
+                            BrandName = "Ford",
+                            ColorId = 1,
+                            ColorName = "White",
+                            DailyPrice = 1400m,
+                            Description = "Ford Mustang 2012 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2012,
+                            TransmissionType = "Manual"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BrandId = 8,
+                            BrandName = "Chevrolet",
+                            ColorId = 2,
+                            ColorName = "Gray",
+                            DailyPrice = 1200m,
+                            Description = "Chevrolet Cruze 2011 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2011,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BrandId = 1,
+                            BrandName = "BMW",
+                            ColorId = 3,
+                            ColorName = "Black",
+                            DailyPrice = 1500m,
+                            Description = "BMW X5 2010 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2010,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            BrandId = 2,
+                            BrandName = "Mercedes-Benz",
+                            ColorId = 4,
+                            ColorName = "Red",
+                            DailyPrice = 1400m,
+                            Description = "Mercedes-Benz E200 2009 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2009,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            BrandId = 3,
+                            BrandName = "Volvo",
+                            ColorId = 5,
+                            ColorName = "Midnight Purple",
+                            DailyPrice = 1300m,
+                            Description = "Volvo V60 2008 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2008,
+                            TransmissionType = "Automatic"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            BrandId = 4,
+                            BrandName = "Nissan",
+                            ColorId = 1,
+                            ColorName = "White",
+                            DailyPrice = 1100m,
+                            Description = "Nissan Sentra 2007 Model",
+                            IsActive = true,
+                            IsDeleted = false,
+                            ModelYear = 2007,
+                            TransmissionType = "Manual"
                         });
                 });
 
@@ -657,6 +917,13 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             Name = "Midnight Purple"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            IsDeleted = false,
+                            Name = "Blue"
                         });
                 });
 
