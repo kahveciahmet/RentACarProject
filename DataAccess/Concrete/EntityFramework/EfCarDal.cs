@@ -33,25 +33,25 @@ namespace DataAccess
                         {
                             Id = car.Id,
                             BrandId = car.BrandId,
-                            BrandName = brand.Name,
+                            BrandName = car.BrandName,
                             ColorId = car.ColorId,
-                            ColorName = color.Name,
-                            DailyPrice = car.DailyPrice,
-                            Name = car.Description,
+                            ColorName = car.ColorName,
                             DailyKmLimit = car.DailyKmLimit,
+                            DailyPrice = car.DailyPrice,
+                            Description = car.Description,
                             LicenseAge = car.LicenseAge,
+                            ModelYear = car.ModelYear,
                             RenterAge = car.RenterAge,
                             SeatingCapacity = car.SeatingCapacity,
                             TransmissionType = car.TransmissionType,
                             IsActive = car.IsActive,
-                            IsDeleted = car.IsDeleted
+                            IsDeleted = car.IsDeleted,
                         };
 
                         carDetails.Add(carDto);
 
                         if (carId != null)
                         {
-                            // Belirtilen ID'ye sahip aracı bulduktan sonra döngüden çık
                             break;
                         }
                     }
