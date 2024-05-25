@@ -527,6 +527,9 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("DailyKmLimit")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18, 2)");
 
@@ -540,7 +543,16 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int>("LicenseAge")
+                        .HasColumnType("int");
+
                     b.Property<int>("ModelYear")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RenterAge")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SeatingCapacity")
                         .HasColumnType("int");
 
                     b.Property<string>("TransmissionType")
@@ -559,11 +571,15 @@ namespace DataAccess.Migrations
                             BrandName = "BMW",
                             ColorId = 3,
                             ColorName = "Black",
+                            DailyKmLimit = 200,
                             DailyPrice = 1500m,
                             Description = "BMW 520i Sedan 2023 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2023,
+                            RenterAge = 25,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -573,11 +589,15 @@ namespace DataAccess.Migrations
                             BrandName = "Mercedes-Benz",
                             ColorId = 2,
                             ColorName = "White",
+                            DailyKmLimit = 250,
                             DailyPrice = 2000m,
                             Description = "Mercedes-Benz GLC180 SUV 2024 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2024,
+                            RenterAge = 25,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -587,11 +607,15 @@ namespace DataAccess.Migrations
                             BrandName = "Volvo",
                             ColorId = 4,
                             ColorName = "Red",
+                            DailyKmLimit = 220,
                             DailyPrice = 1800m,
                             Description = "Volvo S90 Sedan 2022 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2022,
+                            RenterAge = 25,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -601,11 +625,15 @@ namespace DataAccess.Migrations
                             BrandName = "Nissan",
                             ColorId = 5,
                             ColorName = "Midnight Purple",
+                            DailyKmLimit = 300,
                             DailyPrice = 2500m,
                             Description = "Nissan GT-R R35 2016 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 5,
                             ModelYear = 2024,
+                            RenterAge = 30,
+                            SeatingCapacity = 4,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -615,11 +643,15 @@ namespace DataAccess.Migrations
                             BrandName = "Toyota",
                             ColorId = 1,
                             ColorName = "White",
+                            DailyKmLimit = 180,
                             DailyPrice = 1200m,
                             Description = "Toyota Corolla 2023 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 1,
                             ModelYear = 2023,
+                            RenterAge = 21,
+                            SeatingCapacity = 5,
                             TransmissionType = "Manual"
                         },
                         new
@@ -629,11 +661,15 @@ namespace DataAccess.Migrations
                             BrandName = "Honda",
                             ColorId = 2,
                             ColorName = "Gray",
+                            DailyKmLimit = 190,
                             DailyPrice = 1300m,
                             Description = "Honda Civic 2021 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2021,
+                            RenterAge = 22,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -643,11 +679,15 @@ namespace DataAccess.Migrations
                             BrandName = "Ford",
                             ColorId = 3,
                             ColorName = "Black",
+                            DailyKmLimit = 200,
                             DailyPrice = 1400m,
                             Description = "Ford Focus 2020 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2020,
+                            RenterAge = 23,
+                            SeatingCapacity = 5,
                             TransmissionType = "Manual"
                         },
                         new
@@ -657,11 +697,15 @@ namespace DataAccess.Migrations
                             BrandName = "Chevrolet",
                             ColorId = 4,
                             ColorName = "Red",
+                            DailyKmLimit = 210,
                             DailyPrice = 1600m,
                             Description = "Chevrolet Malibu 2019 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2019,
+                            RenterAge = 24,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -671,11 +715,15 @@ namespace DataAccess.Migrations
                             BrandName = "BMW",
                             ColorId = 5,
                             ColorName = "Midnight Purple",
+                            DailyKmLimit = 200,
                             DailyPrice = 1500m,
                             Description = "BMW 320i 2018 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2018,
+                            RenterAge = 24,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -685,11 +733,15 @@ namespace DataAccess.Migrations
                             BrandName = "Mercedes-Benz",
                             ColorId = 1,
                             ColorName = "White",
+                            DailyKmLimit = 190,
                             DailyPrice = 1400m,
                             Description = "Mercedes-Benz C180 2017 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2017,
+                            RenterAge = 23,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -699,11 +751,15 @@ namespace DataAccess.Migrations
                             BrandName = "Volvo",
                             ColorId = 2,
                             ColorName = "Gray",
+                            DailyKmLimit = 180,
                             DailyPrice = 1300m,
                             Description = "Volvo XC60 2016 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2016,
+                            RenterAge = 22,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -713,11 +769,15 @@ namespace DataAccess.Migrations
                             BrandName = "Nissan",
                             ColorId = 3,
                             ColorName = "Black",
+                            DailyKmLimit = 170,
                             DailyPrice = 1200m,
                             Description = "Nissan Altima 2015 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2015,
+                            RenterAge = 21,
+                            SeatingCapacity = 5,
                             TransmissionType = "Manual"
                         },
                         new
@@ -727,11 +787,15 @@ namespace DataAccess.Migrations
                             BrandName = "Toyota",
                             ColorId = 4,
                             ColorName = "Red",
+                            DailyKmLimit = 180,
                             DailyPrice = 1300m,
                             Description = "Toyota Camry 2014 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2014,
+                            RenterAge = 21,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -741,11 +805,15 @@ namespace DataAccess.Migrations
                             BrandName = "Honda",
                             ColorId = 5,
                             ColorName = "Midnight Purple",
+                            DailyKmLimit = 170,
                             DailyPrice = 1100m,
                             Description = "Honda Accord 2013 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 1,
                             ModelYear = 2013,
+                            RenterAge = 20,
+                            SeatingCapacity = 5,
                             TransmissionType = "Manual"
                         },
                         new
@@ -755,11 +823,15 @@ namespace DataAccess.Migrations
                             BrandName = "Ford",
                             ColorId = 1,
                             ColorName = "White",
+                            DailyKmLimit = 200,
                             DailyPrice = 1400m,
                             Description = "Ford Mustang 2012 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2012,
+                            RenterAge = 24,
+                            SeatingCapacity = 4,
                             TransmissionType = "Manual"
                         },
                         new
@@ -769,11 +841,15 @@ namespace DataAccess.Migrations
                             BrandName = "Chevrolet",
                             ColorId = 2,
                             ColorName = "Gray",
+                            DailyKmLimit = 170,
                             DailyPrice = 1200m,
                             Description = "Chevrolet Cruze 2011 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 1,
                             ModelYear = 2011,
+                            RenterAge = 20,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -783,11 +859,15 @@ namespace DataAccess.Migrations
                             BrandName = "BMW",
                             ColorId = 3,
                             ColorName = "Black",
+                            DailyKmLimit = 200,
                             DailyPrice = 1500m,
                             Description = "BMW X5 2010 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2010,
+                            RenterAge = 23,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -797,11 +877,15 @@ namespace DataAccess.Migrations
                             BrandName = "Mercedes-Benz",
                             ColorId = 4,
                             ColorName = "Red",
+                            DailyKmLimit = 190,
                             DailyPrice = 1400m,
                             Description = "Mercedes-Benz E200 2009 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2009,
+                            RenterAge = 22,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -811,11 +895,15 @@ namespace DataAccess.Migrations
                             BrandName = "Volvo",
                             ColorId = 5,
                             ColorName = "Midnight Purple",
+                            DailyKmLimit = 180,
                             DailyPrice = 1300m,
                             Description = "Volvo V60 2008 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 3,
                             ModelYear = 2008,
+                            RenterAge = 22,
+                            SeatingCapacity = 5,
                             TransmissionType = "Automatic"
                         },
                         new
@@ -825,11 +913,15 @@ namespace DataAccess.Migrations
                             BrandName = "Nissan",
                             ColorId = 1,
                             ColorName = "White",
+                            DailyKmLimit = 170,
                             DailyPrice = 1100m,
                             Description = "Nissan Sentra 2007 Model",
                             IsActive = true,
                             IsDeleted = false,
+                            LicenseAge = 2,
                             ModelYear = 2007,
+                            RenterAge = 21,
+                            SeatingCapacity = 5,
                             TransmissionType = "Manual"
                         });
                 });

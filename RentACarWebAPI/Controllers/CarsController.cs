@@ -33,10 +33,25 @@ namespace RentACarWebAPI.Controllers
         /// Bu API sayesinde tüm arabaları marka idsine göre getirebilirsiniz.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetAllByBrandId")]
-        public IActionResult GetAllByBrandId(int id)
+        [HttpGet("GetByBrandId")]
+        public IActionResult GetByBrandId(int brandId)
         {
-            var result = _carService.GetAllByBrandId(id);
+            var result = _carService.GetAllByBrandId(brandId);
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        /// <summary>
+        /// Bu API sayesinde tüm arabaları renk idsine göre getirebilirsiniz.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetByColorId")]
+        public IActionResult GetByColorId(int colorId)
+        {
+            var result = _carService.GetAllByColorId(colorId);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -49,9 +64,9 @@ namespace RentACarWebAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetCarDetails")]
-        public IActionResult GetCarDetails()
+        public IActionResult GetCarDetails(int? carId)
         {
-            var result = _carService.GetCarDetails();
+            var result = _carService.GetCarDetails(carId);
             if (result.IsSuccess)
             {
                 return Ok(result);

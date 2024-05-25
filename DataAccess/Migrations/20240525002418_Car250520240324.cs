@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class DatabaseUpdate220520241913 : Migration
+    public partial class Car250520240324 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,6 +57,10 @@ namespace DataAccess.Migrations
                     DailyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TransmissionType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DailyKmLimit = table.Column<int>(type: "int", nullable: false),
+                    SeatingCapacity = table.Column<int>(type: "int", nullable: false),
+                    LicenseAge = table.Column<int>(type: "int", nullable: false),
+                    RenterAge = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -181,29 +185,29 @@ namespace DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "BrandId", "BrandName", "ColorId", "ColorName", "DailyPrice", "Description", "IsActive", "IsDeleted", "ModelYear", "TransmissionType" },
+                columns: new[] { "Id", "BrandId", "BrandName", "ColorId", "ColorName", "DailyKmLimit", "DailyPrice", "Description", "IsActive", "IsDeleted", "LicenseAge", "ModelYear", "RenterAge", "SeatingCapacity", "TransmissionType" },
                 values: new object[,]
                 {
-                    { 1, 1, "BMW", 3, "Black", 1500m, "BMW 520i Sedan 2023 Model", true, false, 2023, "Automatic" },
-                    { 2, 2, "Mercedes-Benz", 2, "White", 2000m, "Mercedes-Benz GLC180 SUV 2024 Model", true, false, 2024, "Automatic" },
-                    { 3, 3, "Volvo", 4, "Red", 1800m, "Volvo S90 Sedan 2022 Model", true, false, 2022, "Automatic" },
-                    { 4, 4, "Nissan", 5, "Midnight Purple", 2500m, "Nissan GT-R R35 2016 Model", true, false, 2024, "Automatic" },
-                    { 5, 5, "Toyota", 1, "White", 1200m, "Toyota Corolla 2023 Model", true, false, 2023, "Manual" },
-                    { 6, 6, "Honda", 2, "Gray", 1300m, "Honda Civic 2021 Model", true, false, 2021, "Automatic" },
-                    { 7, 7, "Ford", 3, "Black", 1400m, "Ford Focus 2020 Model", true, false, 2020, "Manual" },
-                    { 8, 8, "Chevrolet", 4, "Red", 1600m, "Chevrolet Malibu 2019 Model", true, false, 2019, "Automatic" },
-                    { 9, 1, "BMW", 5, "Midnight Purple", 1500m, "BMW 320i 2018 Model", true, false, 2018, "Automatic" },
-                    { 10, 2, "Mercedes-Benz", 1, "White", 1400m, "Mercedes-Benz C180 2017 Model", true, false, 2017, "Automatic" },
-                    { 11, 3, "Volvo", 2, "Gray", 1300m, "Volvo XC60 2016 Model", true, false, 2016, "Automatic" },
-                    { 12, 4, "Nissan", 3, "Black", 1200m, "Nissan Altima 2015 Model", true, false, 2015, "Manual" },
-                    { 13, 5, "Toyota", 4, "Red", 1300m, "Toyota Camry 2014 Model", true, false, 2014, "Automatic" },
-                    { 14, 6, "Honda", 5, "Midnight Purple", 1100m, "Honda Accord 2013 Model", true, false, 2013, "Manual" },
-                    { 15, 7, "Ford", 1, "White", 1400m, "Ford Mustang 2012 Model", true, false, 2012, "Manual" },
-                    { 16, 8, "Chevrolet", 2, "Gray", 1200m, "Chevrolet Cruze 2011 Model", true, false, 2011, "Automatic" },
-                    { 17, 1, "BMW", 3, "Black", 1500m, "BMW X5 2010 Model", true, false, 2010, "Automatic" },
-                    { 18, 2, "Mercedes-Benz", 4, "Red", 1400m, "Mercedes-Benz E200 2009 Model", true, false, 2009, "Automatic" },
-                    { 19, 3, "Volvo", 5, "Midnight Purple", 1300m, "Volvo V60 2008 Model", true, false, 2008, "Automatic" },
-                    { 20, 4, "Nissan", 1, "White", 1100m, "Nissan Sentra 2007 Model", true, false, 2007, "Manual" }
+                    { 1, 1, "BMW", 3, "Black", 200, 1500m, "BMW 520i Sedan 2023 Model", true, false, 2, 2023, 25, 5, "Automatic" },
+                    { 2, 2, "Mercedes-Benz", 2, "White", 250, 2000m, "Mercedes-Benz GLC180 SUV 2024 Model", true, false, 3, 2024, 25, 5, "Automatic" },
+                    { 3, 3, "Volvo", 4, "Red", 220, 1800m, "Volvo S90 Sedan 2022 Model", true, false, 3, 2022, 25, 5, "Automatic" },
+                    { 4, 4, "Nissan", 5, "Midnight Purple", 300, 2500m, "Nissan GT-R R35 2016 Model", true, false, 5, 2024, 30, 4, "Automatic" },
+                    { 5, 5, "Toyota", 1, "White", 180, 1200m, "Toyota Corolla 2023 Model", true, false, 1, 2023, 21, 5, "Manual" },
+                    { 6, 6, "Honda", 2, "Gray", 190, 1300m, "Honda Civic 2021 Model", true, false, 2, 2021, 22, 5, "Automatic" },
+                    { 7, 7, "Ford", 3, "Black", 200, 1400m, "Ford Focus 2020 Model", true, false, 2, 2020, 23, 5, "Manual" },
+                    { 8, 8, "Chevrolet", 4, "Red", 210, 1600m, "Chevrolet Malibu 2019 Model", true, false, 3, 2019, 24, 5, "Automatic" },
+                    { 9, 1, "BMW", 5, "Midnight Purple", 200, 1500m, "BMW 320i 2018 Model", true, false, 3, 2018, 24, 5, "Automatic" },
+                    { 10, 2, "Mercedes-Benz", 1, "White", 190, 1400m, "Mercedes-Benz C180 2017 Model", true, false, 2, 2017, 23, 5, "Automatic" },
+                    { 11, 3, "Volvo", 2, "Gray", 180, 1300m, "Volvo XC60 2016 Model", true, false, 2, 2016, 22, 5, "Automatic" },
+                    { 12, 4, "Nissan", 3, "Black", 170, 1200m, "Nissan Altima 2015 Model", true, false, 2, 2015, 21, 5, "Manual" },
+                    { 13, 5, "Toyota", 4, "Red", 180, 1300m, "Toyota Camry 2014 Model", true, false, 2, 2014, 21, 5, "Automatic" },
+                    { 14, 6, "Honda", 5, "Midnight Purple", 170, 1100m, "Honda Accord 2013 Model", true, false, 1, 2013, 20, 5, "Manual" },
+                    { 15, 7, "Ford", 1, "White", 200, 1400m, "Ford Mustang 2012 Model", true, false, 3, 2012, 24, 4, "Manual" },
+                    { 16, 8, "Chevrolet", 2, "Gray", 170, 1200m, "Chevrolet Cruze 2011 Model", true, false, 1, 2011, 20, 5, "Automatic" },
+                    { 17, 1, "BMW", 3, "Black", 200, 1500m, "BMW X5 2010 Model", true, false, 3, 2010, 23, 5, "Automatic" },
+                    { 18, 2, "Mercedes-Benz", 4, "Red", 190, 1400m, "Mercedes-Benz E200 2009 Model", true, false, 3, 2009, 22, 5, "Automatic" },
+                    { 19, 3, "Volvo", 5, "Midnight Purple", 180, 1300m, "Volvo V60 2008 Model", true, false, 3, 2008, 22, 5, "Automatic" },
+                    { 20, 4, "Nissan", 1, "White", 170, 1100m, "Nissan Sentra 2007 Model", true, false, 2, 2007, 21, 5, "Manual" }
                 });
 
             migrationBuilder.InsertData(

@@ -1,27 +1,63 @@
 ﻿using Core.DataAccess;
 using Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataAccess
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RentACarDB>, ICarDal
     {
-        public List<CarDto> GetCarDetails()
+        public List<CarDto> GetCarDetails(int? carId = null)
         {
             using (RentACarDB context = new RentACarDB())
             {
-                var result = from c in context.Cars
-                             join b in context.Brands on c.BrandId equals b.Id
-                             join x in context.Colors on c.ColorId equals x.Id
-                             select new CarDto
-                             {
-                                 Id = c.Id,
-                                 BrandName = b.Name,
-                                 ColorName = x.Name,
-                                 DailyPrice = c.DailyPrice,
-                                 Name = c.Description,
-                             };
+                var carDetails = new List<CarDto>();
 
-                return result.ToList();
+                var cars = context.Cars.ToList();
+                var brands = context.Brands.ToList();
+                var colors = context.Colors.ToList();
+
+                foreach (var car in cars)
+                {
+                    if (carId != null && car.Id != carId.Value)
+                    {
+                        continue;
+                    }
+
+                    var brand = brands.FirstOrDefault(b => b.Id == car.BrandId);
+                    var color = colors.FirstOrDefault(c => c.Id == car.ColorId);
+
+                    if (brand != null && color != null)
+                    {
+                        var carDto = new CarDto
+                        {
+                            Id = car.Id,
+                            BrandId = car.BrandId,
+                            BrandName = brand.Name,
+                            ColorId = car.ColorId,
+                            ColorName = color.Name,
+                            DailyPrice = car.DailyPrice,
+                            Name = car.Description,
+                            DailyKmLimit = car.DailyKmLimit,
+                            LicenseAge = car.LicenseAge,
+                            RenterAge = car.RenterAge,
+                            SeatingCapacity = car.SeatingCapacity,
+                            TransmissionType = car.TransmissionType,
+                            IsActive = car.IsActive,
+                            IsDeleted = car.IsDeleted
+                        };
+
+                        carDetails.Add(carDto);
+
+                        if (carId != null)
+                        {
+                            // Belirtilen ID'ye sahip aracı bulduktan sonra döngüden çık
+                            break;
+                        }
+                    }
+                }
+
+                return carDetails;
             }
         }
     }

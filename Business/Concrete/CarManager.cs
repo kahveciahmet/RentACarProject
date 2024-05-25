@@ -60,9 +60,16 @@ namespace Business
             return new SuccessDataResult<List<Car>>(_carDal.GetAll());    
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(x=>x.BrandId == id));
+        }
+
+        [CacheAspect]
+        public IDataResult<List<Car>> GetAllByColorId(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id));
         }
 
         [CacheAspect]
@@ -71,9 +78,9 @@ namespace Business
             return new SuccessDataResult<Car>(_carDal.Get(x => x.Id == id));
         }
 
-        public IDataResult<List<CarDto>> GetCarDetails()
+        public IDataResult<List<CarDto>> GetCarDetails(int? carId)
         {
-            return new SuccessDataResult<List<CarDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDto>>(_carDal.GetCarDetails(carId));
         }
 
         private IResult CheckCarExistence(int carId)
