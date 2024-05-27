@@ -17,7 +17,6 @@ namespace Business
             _userDal = userDal;
         }
 
-        [SecuredOperation("user.add,admin")]
         [TransactionScopeAspect]
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
@@ -26,7 +25,6 @@ namespace Business
             return new SuccessResult(Messages.ItemAdded);
         }
 
-        [SecuredOperation("user.delete,admin")]
         [TransactionScopeAspect]
         public IResult Delete(User user)
         {
@@ -34,7 +32,6 @@ namespace Business
             return new SuccessResult(Messages.ItemDeleted);
         }
 
-        [SecuredOperation("user.update,admin")]
         [TransactionScopeAspect]
         public IResult Update(User user)
         {
